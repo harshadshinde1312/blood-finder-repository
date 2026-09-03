@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blood Finder | Find Blood. Save Lives.</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="/" class="logo">
+            <span class="logo-drop">♥</span>
+            BLOOD<span>FINDER</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/search">Find Blood</a>
+            <a href="/register">Become a Donor</a>
+            <a href="/about">About</a>
+        </nav>
+
+        <a href="/search" class="nav-button">
+            Find Blood
+        </a>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    Connecting people. Saving lives.
+                </div>
+
+                <h1>
+                    Find Blood.<br>
+                    <span>Save Lives.</span>
+                </h1>
+
+                <p>
+                    Find available blood donors near you quickly,
+                    connect with them, and help someone when it matters most.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="/search" class="primary-button">
+                        🔍 Find Blood
+                        <span>→</span>
+                    </a>
+
+                    <a href="/register" class="secondary-button">
+                        ❤️ Become a Donor
+                    </a>
+
+                </div>
+
+                <div class="hero-trust">
+
+                    <div class="trust-item">
+                        <strong>8</strong>
+                        <span>Blood Groups</span>
+                    </div>
+
+                    <div class="trust-line"></div>
+
+                    <div class="trust-item">
+                        <strong>24/7</strong>
+                        <span>Access</span>
+                    </div>
+
+                    <div class="trust-line"></div>
+
+                    <div class="trust-item">
+                        <strong>1</strong>
+                        <span>Mission</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="hero-visual">
+
+                <div class="glow-circle"></div>
+
+                <div class="blood-orb">
+
+                    <div class="orb-inner">
+                        <span>♥</span>
+                    </div>
+
+                </div>
+
+                <div class="floating-card card-location">
+                    <div class="mini-icon">📍</div>
+                    <div>
+                        <small>Nearby donors</small>
+                        <strong>Find help around you</strong>
+                    </div>
+                </div>
+
+                <div class="floating-card card-blood">
+                    <div class="blood-symbol">O+</div>
+                    <div>
+                        <small>Blood needed</small>
+                        <strong>Donors available</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK SEARCH -->
+
+        <section class="quick-search">
+
+            <div class="search-heading">
+                <span class="section-label">QUICK SEARCH</span>
+
+                <h2>Need blood right now?</h2>
+
+                <p>
+                    Search for available donors by blood group and location.
+                </p>
+            </div>
+
+            <div class="search-box">
+
+                <div class="search-field">
+
+                    <label>🩸 Blood Group</label>
+
+                    <select>
+                        <option>Select blood group</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                    </select>
+
+                </div>
+
+                <div class="search-field">
+
+                    <label>📍 Location</label>
+
+                    <div class="location-input">
+                        <span>⌖</span>
+                        <input
+                            type="text"
+                            placeholder="Enter city or village"
+                        >
+                    </div>
+
+                </div>
+
+                <a href="/search" class="search-button">
+                    Search Donors →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+
+        <section class="how-section">
+
+            <div class="section-header">
+
+                <span class="section-label">HOW IT WORKS</span>
+
+                <h2>Blood when you need it.</h2>
+
+                <p>
+                    A simple connection can make a life-changing difference.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step-card">
+
+                    <div class="step-number">01</div>
+
+                    <div class="step-icon">🔍</div>
+
+                    <h3>Search</h3>
+
+                    <p>
+                        Select the blood group you need and search for
+                        donors near your location.
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">02</div>
+
+                    <div class="step-icon">📍</div>
+
+                    <h3>Find Nearby</h3>
+
+                    <p>
+                        Discover available donors based on your location
+                        and connect with the closest match.
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">03</div>
+
+                    <div class="step-icon">❤️</div>
+
+                    <h3>Save a Life</h3>
+
+                    <p>
+                        Contact the donor and help someone receive the
+                        blood they urgently need.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DONOR CTA -->
+
+        <section class="donor-cta">
+
+            <div class="cta-content">
+
+                <span class="section-label light">
+                    BE THE DIFFERENCE
+                </span>
+
+                <h2>
+                    Someone's life could depend<br>
+                    on your decision today.
+                </h2>
+
+                <p>
+                    Register as a donor and make yourself available
+                    when someone nearby needs your blood group.
+                </p>
+
+                <a href="/register" class="cta-button">
+                    Become a Blood Donor ❤️
+                </a>
+
+            </div>
+
+            <div class="cta-heart">
+                ♥
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <div class="footer-main">
+
+                <div class="footer-brand">
+
+                    <a href="/" class="logo footer-logo">
+                        <span class="logo-drop">♥</span>
+                        BLOOD<span>FINDER</span>
+                    </a>
+
+                    <p>
+                        Connecting blood donors with people
+                        who need them.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <div>
+                        <h4>Platform</h4>
+                        <a href="/search">Find Blood</a>
+                        <a href="/register">Become a Donor</a>
+                    </div>
+
+                    <div>
+                        <h4>Company</h4>
+                        <a href="/about">About Us</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>© 2026 Blood Finder</span>
+
+                <span>Built with ❤️ to help save lives.</span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>

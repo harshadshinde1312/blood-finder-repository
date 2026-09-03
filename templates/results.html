@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Donors Found | Blood Finder</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <a href="/" class="logo">
+        <span class="logo-drop">♥</span>
+        BLOOD<span>FINDER</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="/search">Find Blood</a>
+
+        <a href="/register">Become a Donor</a>
+
+        <a href="/about">About</a>
+
+    </nav>
+
+    <a href="/search" class="nav-button">
+        New Search
+    </a>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+<section class="results-page">
+
+
+    <!-- HEADING -->
+
+    <div class="results-heading">
+
+        <span class="section-label">
+            SEARCH RESULTS
+        </span>
+
+        <h1>
+            Donors who can<br>
+            <span>make a difference.</span>
+        </h1>
+
+        {% if gps_search %}
+
+        <p>
+            Showing available donors nearest to your current location.
+        </p>
+
+        {% else %}
+
+        <p>
+            Showing available donors matching your selected blood group
+            and location.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- RESULT SUMMARY -->
+
+    <div class="results-summary">
+
+        <div>
+
+            <span class="summary-icon">🩸</span>
+
+            <div>
+                <small>DONORS FOUND</small>
+
+                <strong>
+                    {{ donors|length }}
+                </strong>
+            </div>
+
+        </div>
+
+
+        <a href="/search" class="change-search">
+            ← Change Search
+        </a>
+
+    </div>
+
+
+    <!-- ================= DONOR LIST ================= -->
+
+    {% if donors %}
+
+    <div class="donor-grid">
+
+
+        {% for donor in donors %}
+
+        <article class="donor-card">
+
+
+            <div class="donor-card-top">
+
+                <div class="donor-avatar">
+
+                    {{ donor["name"][0]|upper }}
+
+                </div>
+
+
+                <div class="donor-basic">
+
+                    <h2>
+                        {{ donor["name"] }}
+                    </h2>
+
+                    <span class="available-badge">
+                        <span></span>
+                        Available
+                    </span>
+
+                </div>
+
+
+                <div class="blood-badge">
+
+                    {{ donor["blood_group"] }}
+
+                </div>
+
+            </div>
+
+
+            <div class="donor-divider"></div>
+
+
+            <div class="donor-details">
+
+
+                <div class="donor-detail">
+
+                    <span>📍</span>
+
+                    <div>
+
+                        <small>LOCATION</small>
+
+                        <strong>
+                            {{ donor["location"] }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                {% if gps_search and donor["distance"] is defined %}
+
+                <div class="donor-detail">
+
+                    <span>↝</span>
+
+                    <div>
+
+                        <small>DISTANCE</small>
+
+                        <strong>
+                            {{ donor["distance"] }} km away
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+
+            <div class="donor-card-bottom">
+
+                <a
+                    href="tel:{{ donor['phone'] }}"
+                    class="contact-donor"
+                >
+
+                    <span>📞</span>
+
+                    Contact Donor
+
+                    <span class="contact-arrow">→</span>
+
+                </a>
+
+            </div>
+
+
+        </article>
+
+        {% endfor %}
+
+
+    </div>
+
+
+    {% else %}
+
+
+    <!-- ================= NO RESULTS ================= -->
+
+    <div class="no-results">
+
+        <div class="no-results-icon">
+            🩸
+        </div>
+
+        <h2>
+            No matching donors found
+        </h2>
+
+        <p>
+            We couldn't find an available donor matching
+            your search right now.
+        </p>
+
+        <a href="/search" class="find-button">
+            Try Another Search
+            <span>→</span>
+        </a>
+
+    </div>
+
+
+    {% endif %}
+
+
+    <!-- SAFETY NOTE -->
+
+    <div class="results-note">
+
+        <span>♥</span>
+
+        <p>
+            Blood Finder connects you with registered donors.
+            Please verify donor availability and donation eligibility
+            through a qualified blood bank or hospital before donation.
+        </p>
+
+    </div>
+
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <a href="/" class="logo footer-logo">
+
+                <span class="logo-drop">♥</span>
+
+                BLOOD<span>FINDER</span>
+
+            </a>
+
+            <p>
+                Connecting blood donors with people who need them.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div>
+
+                <h4>Platform</h4>
+
+                <a href="/search">
+                    Find Blood
+                </a>
+
+                <a href="/register">
+                    Become a Donor
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>Company</h4>
+
+                <a href="/about">
+                    About Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Blood Finder
+        </span>
+
+        <span>
+            Built with ❤️ to help save lives.
+        </span>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

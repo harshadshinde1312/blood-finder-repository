@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Blood | Blood Finder</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="/" class="logo">
+        <span class="logo-drop">♥</span>
+        BLOOD<span>FINDER</span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/search">Find Blood</a>
+        <a href="/register">Become a Donor</a>
+        <a href="/about">About</a>
+    </nav>
+
+    <a href="/register" class="nav-button">
+        Become a Donor
+    </a>
+
+</header>
+
+
+<main>
+
+<section class="find-hero">
+
+    <div class="find-heading">
+
+        <span class="section-label">
+            FIND BLOOD
+        </span>
+
+        <h1>
+            Find the right blood.<br>
+            <span>When it matters.</span>
+        </h1>
+
+        <p>
+            Search available blood donors near you using your
+            blood group and location.
+        </p>
+
+    </div>
+
+
+    <div class="find-panel">
+
+        <div class="panel-top">
+
+            <div>
+                <span class="panel-label">SEARCH DONORS</span>
+                <h2>Who are you looking for?</h2>
+            </div>
+
+            <div class="live-status">
+                <span></span>
+                Donors can be available
+            </div>
+
+        </div>
+
+
+        <form action="/search" method="POST">
+
+
+            <!-- BLOOD GROUP -->
+
+            <div class="form-section">
+
+                <label>
+                    🩸 Select Blood Group
+                </label>
+
+                <div class="blood-groups">
+
+                    <label class="blood-option">
+                        <input type="radio" name="blood_group" value="A+" required>
+                        <span>A+</span>
+                    </label>
+
+                    <label class="blood-option">
+                        <input type="radio" name="blood_group" value="A-">
+                        <span>A-</span>
+                    </label>
+
+                    <label class="blood-option">
+                        <input type="radio" name="blood_group" value="B+">
+                        <span>B+</span>
+                    </label>
+
+                    <label class="blood-option">
+                        <input type="radio" name="blood_group" value="B-">
+                        <span>B-</span>
+                    </label>
+
+                    <label class="blood-option">
+                        <input type="radio" name="blood_group" value="AB+">
+                        <span>AB+</span>
+                    </label>
+
+                    <label class="blood-option">
+                        <input type="radio" name="blood_group" value="AB-">
+                        <span>AB-</span>
+                    </label>
+
+                    <label class="blood-option">
+                        <input type="radio" name="blood_group" value="O+">
+                        <span>O+</span>
+                    </label>
+
+                    <label class="blood-option">
+                        <input type="radio" name="blood_group" value="O-">
+                        <span>O-</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="form-section">
+
+                <label>
+                    📍 Find donors near you
+                </label>
+
+                <div class="location-options">
+
+                    <button
+                        type="button"
+                        class="gps-button"
+                        onclick="getLocation()"
+                    >
+                        <span>📍</span>
+
+                        <div>
+                            <strong>Use My Current Location</strong>
+                            <small>Allow location access to find nearby donors</small>
+                        </div>
+
+                    </button>
+
+
+                    <div class="or-divider">
+                        <span>OR</span>
+                    </div>
+
+
+                    <div class="manual-location">
+
+                        <span>⌖</span>
+
+                        <input
+                            type="text"
+                            name="location"
+                            id="location"
+                            placeholder="Enter city, town or village"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HIDDEN GPS FIELDS -->
+
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+
+
+            <button type="submit" class="find-button">
+                🔍 Find Nearby Donors
+                <span>→</span>
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- INFORMATION -->
+
+<section class="search-info">
+
+    <div class="search-info-card">
+
+        <div class="info-icon">📍</div>
+
+        <div>
+            <h3>Location-based matching</h3>
+
+            <p>
+                Use your current location or enter your area
+                manually. We'll help you find available donors nearby.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="search-info-card">
+
+        <div class="info-icon">❤️</div>
+
+        <div>
+            <h3>Every donor matters</h3>
+
+            <p>
+                Blood Finder helps connect people with registered
+                donors. Final donation eligibility is verified by
+                qualified medical professionals.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <a href="/" class="logo footer-logo">
+                <span class="logo-drop">♥</span>
+                BLOOD<span>FINDER</span>
+            </a>
+
+            <p>
+                Connecting blood donors with people who need them.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <div>
+                <h4>Platform</h4>
+                <a href="/search">Find Blood</a>
+                <a href="/register">Become a Donor</a>
+            </div>
+
+            <div>
+                <h4>Company</h4>
+                <a href="/about">About Us</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>© 2026 Blood Finder</span>
+
+        <span>Built with ❤️ to help save lives.</span>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function getLocation() {
+
+    const button = document.querySelector(".gps-button");
+
+    if (!navigator.geolocation) {
+
+        alert("Location is not supported by your browser.");
+
+        return;
+
+    }
+
+    button.innerHTML = `
+        <span>⏳</span>
+        <div>
+            <strong>Getting your location...</strong>
+            <small>Please allow location access</small>
+        </div>
+    `;
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            document.getElementById("latitude").value =
+                position.coords.latitude;
+
+            document.getElementById("longitude").value =
+                position.coords.longitude;
+
+
+            button.innerHTML = `
+                <span>✅</span>
+                <div>
+                    <strong>Location detected</strong>
+                    <small>Your current location is ready</small>
+                </div>
+            `;
+
+        },
+
+        function(error) {
+
+            button.innerHTML = `
+                <span>📍</span>
+                <div>
+                    <strong>Use My Current Location</strong>
+                    <small>Location permission was not granted</small>
+                </div>
+            `;
+
+            alert(
+                "We couldn't access your location. You can enter your city or village manually."
+            );
+
+        }
+
+    );
+
+}
+
+</script>
+
+</body>
+</html>

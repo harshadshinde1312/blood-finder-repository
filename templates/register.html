@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Become a Donor | Blood Finder</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="/" class="logo">
+        <span class="logo-drop">♥</span>
+        BLOOD<span>FINDER</span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/search">Find Blood</a>
+        <a href="/register">Become a Donor</a>
+        <a href="/about">About</a>
+    </nav>
+
+    <a href="/search" class="nav-button">
+        Find Blood
+    </a>
+
+</header>
+
+
+<main>
+
+<section class="register-page">
+
+    <div class="register-heading">
+
+        <span class="section-label">
+            JOIN THE COMMUNITY
+        </span>
+
+        <h1>
+            Become a blood donor.<br>
+            <span>Be someone's hope.</span>
+        </h1>
+
+        <p>
+            Register your details so people looking for your
+            blood group can find an available donor nearby.
+        </p>
+
+    </div>
+
+
+    <div class="register-container">
+
+        <div class="register-side">
+
+            <div class="register-heart">♥</div>
+
+            <h2>
+                Your one decision<br>
+                can make a difference.
+            </h2>
+
+            <p>
+                By becoming a registered donor, you can help connect
+                with someone who may need your blood group.
+            </p>
+
+            <div class="register-points">
+
+                <div>
+                    <span>✓</span>
+                    <p>Help people near you</p>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <p>Choose your availability</p>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <p>Location-based matching</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="register-form">
+
+            <div class="form-title">
+
+                <span>01</span>
+
+                <div>
+                    <h2>Donor Information</h2>
+                    <p>Tell us a little about yourself.</p>
+                </div>
+
+            </div>
+
+
+            <form action="/register" method="POST">
+
+
+                <div class="input-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-row">
+
+                    <div class="input-group">
+
+                        <label>Blood Group</label>
+
+                        <select name="blood_group" required>
+
+                            <option value="">Select group</option>
+
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Phone Number</label>
+
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Location</label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        id="donor-location"
+                        placeholder="City, town or village"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- GPS -->
+
+                <div class="gps-register">
+
+                    <button
+                        type="button"
+                        onclick="getDonorLocation()"
+                        id="donor-gps-button"
+                    >
+
+                        📍 Use My Current Location
+
+                    </button>
+
+                    <small id="gps-message">
+                        This helps us find donors near the requester.
+                    </small>
+
+                </div>
+
+
+                <!-- HIDDEN COORDINATES -->
+
+                <input
+                    type="hidden"
+                    name="latitude"
+                    id="donor-latitude"
+                >
+
+                <input
+                    type="hidden"
+                    name="longitude"
+                    id="donor-longitude"
+                >
+
+
+                <div class="input-group">
+
+                    <label>Availability</label>
+
+                    <div class="availability-options">
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="available"
+                                value="Yes"
+                                required
+                            >
+                            <span>🟢 Available</span>
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="available"
+                                value="No"
+                            >
+                            <span>⚪ Not Available</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-note">
+
+                    <span>🔒</span>
+
+                    <p>
+                        Your information is used only to connect
+                        blood seekers with registered donors.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="register-button"
+                >
+
+                    Register as a Donor
+                    <span>→</span>
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <a href="/" class="logo footer-logo">
+                <span class="logo-drop">♥</span>
+                BLOOD<span>FINDER</span>
+            </a>
+
+            <p>
+                Connecting blood donors with people who need them.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <div>
+
+                <h4>Platform</h4>
+
+                <a href="/search">Find Blood</a>
+
+                <a href="/register">
+                    Become a Donor
+                </a>
+
+            </div>
+
+            <div>
+
+                <h4>Company</h4>
+
+                <a href="/about">
+                    About Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>© 2026 Blood Finder</span>
+
+        <span>Built with ❤️ to help save lives.</span>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function getDonorLocation() {
+
+    const button =
+        document.getElementById("donor-gps-button");
+
+    const message =
+        document.getElementById("gps-message");
+
+
+    if (!navigator.geolocation) {
+
+        message.textContent =
+            "Location is not supported by this browser.";
+
+        return;
+
+    }
+
+
+    button.textContent =
+        "⏳ Detecting location...";
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            document.getElementById("donor-latitude").value =
+                position.coords.latitude;
+
+            document.getElementById("donor-longitude").value =
+                position.coords.longitude;
+
+
+            button.textContent =
+                "✅ Location Detected";
+
+            message.textContent =
+                "Your GPS location has been saved for nearby matching.";
+
+        },
+
+        function() {
+
+            button.textContent =
+                "📍 Use My Current Location";
+
+            message.textContent =
+                "Location permission was not granted. You can still enter your location manually.";
+
+        }
+
+    );
+
+}
+
+</script>
+
+</body>
+</html>
